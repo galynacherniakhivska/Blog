@@ -1,8 +1,20 @@
-<html>
-<head>
-<title> Sidebar </title>
-</head>
-<body>
-	
-</body>
-</html>
+<div ng-controller="GetPosts">
+  
+    <div class="blog-post" data-ng-repeat="post in posts">
+            <h2 class="blog-post-title">{{post.title}}</h2>
+            <p class="blog-post-meta">{{post.timestamp}} by <a href="#">{{post.author}}</a></p>
+
+            <p>{{post.text}}</p>
+            <button type="button" data-ng-click="deletePost(post)">Remove</button>
+            <!-- <button type="button" data-ng-click="editPost(post)">Edit</button> -->
+                                  
+    
+          </div>
+                    <nav>
+            <ul class="pager">
+              <li><a href="#" data-ng-click="getPrevious()">Previous</a></li>
+              <li><a href="#" data-ng-click="getNext()">Next</a></li>
+            </ul>
+          </nav>
+
+</div>
