@@ -143,10 +143,14 @@ h6, .h6 {
 .blog-post-title {
   margin-bottom: 5px;
   font-size: 40px;
+  float: left;
+  width: 100%;
 }
 .blog-post-meta {
   margin-bottom: 20px;
   color: #999;
+  float: left;
+   width: 100%;
 }
 
 

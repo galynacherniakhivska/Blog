@@ -1,4 +1,4 @@
-blog.controller('postController', function($scope, $rootScope, $log, postService){
+blog.controller('PostController', function($scope, $rootScope, $log, postService){
 	$log.log("controller");
 
 

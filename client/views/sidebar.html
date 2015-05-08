@@ -1,8 +1,8 @@
-<div ng-controller="postController">
-  
+<div ng-controller="PostController">
+         
     <div class="blog-post" data-ng-repeat="post in posts">
-            <h2 class="blog-post-title">{{post.title}}</h2>
-            <p class="blog-post-meta">{{post.timestamp}} by <a href="#">{{post.author}}</a></p>
+            <h2 class="blog-post-title" id="postTitleId">  <a ng-href="views/postDetails.html"> {{post.title}} </a> </h2>
+            <p class="blog-post-meta"> {{post.timestamp}} by <a href="views/postDetails.html">{{post.author}}</a></p>
 
             <p>{{post.text}}</p>
             <button type="button" data-ng-click="deletePost(post)">Remove</button>
