@@ -7,7 +7,7 @@ blog.run(function($rootScope) {
 
 blog.config (function ($routeProvider) {
 	$routeProvider
-	.when ('posts/:id', {
+	.when ('/posts/:id', {
 		controller: 'PostDetailsController',
 		templateUrl: 'views/postDetails.html'
 	})
@@ -15,3 +15,5 @@ blog.config (function ($routeProvider) {
 		redirectTo: '/'
 	});
 });
+
+
