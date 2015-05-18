@@ -7,6 +7,11 @@ blog.run(function($rootScope) {
 
 blog.config (function ($routeProvider) {
 	$routeProvider
+	
+	.when ('/', {
+	controller: 'PostController',
+	templateUrl: 'sidebar.html'
+	})
 	.when ('/posts/:id', {
 		controller: 'PostDetailsController',
 		templateUrl: 'views/postDetails.html'
