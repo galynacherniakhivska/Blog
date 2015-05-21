@@ -1,11 +1,14 @@
 <div ng-controller="PostController">
+
+    <button type="button" data-ng-click="addPost()">Add New</button> 
          
     <div class="blog-post" data-ng-repeat="post in posts">
-            <h2 class="blog-post-title">  <a ng-href="views/postDetails.html"> {{post.title}} </a> </h2>
-            <p class="blog-post-meta"> {{post.timestamp}} by <a href="views/postDetails.html">{{post.author}}</a></p>
+            <h2 class="blog-post-title">  <a href='#'data-ng-href="#/posts/{{post.id}}"> {{post.title}} </a> </h2>
+            <p class="blog-post-meta"> {{post.timestamp}} by {{post.author}}</p>
 
             <p>{{post.text}}</p>
             <button type="button" data-ng-click="deletePost(post)">Remove</button>
+            
             <!-- <button type="button" data-ng-click="editPost(post)">Edit</button> -->
                                   
     

@@ -10,7 +10,7 @@ blog.config (function ($routeProvider) {
 	
 	.when ('/', {
 	controller: 'PostController',
-	templateUrl: 'sidebar.html'
+	templateUrl: 'views/sidebar.html'
 	})
 	.when ('/posts/:id', {
 		controller: 'PostDetailsController',

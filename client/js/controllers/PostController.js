@@ -25,7 +25,12 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 		})
 	}
 
-	$scope.deletePost = function(post) {
+	$scope.addPost = function() {
+  		var post = {"text":"hello there","title":"post"};
+   		postService.addPost (post);
+ 		};
+
+ 	$scope.deletePost = function(post) {
 		$log.log(post.id);
 		postService.deletePost(post.id).
 		then(function(res) {
@@ -35,6 +40,7 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 			// $scope.getPostList();
 		})
 	};	
+	
 
 	//$scope.UpdatePost
 
@@ -52,12 +58,7 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 		return $rootScope.postOnPage * (page - 1);
 	};
 
-	/*function addNew () {
-		 var post = {"text":"hello there","title":"post"};
-		 postService.addPost (post);
-	};*/
-
-
+	
 	$scope.init();
 
 
