@@ -50,7 +50,12 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 
 	function getFirstPostOfPage (page) {
 		return $rootScope.postOnPage * (page - 1);
-	}
+	};
+
+	/*function addNew () {
+		 var post = {"text":"hello there","title":"post"};
+		 postService.addPost (post);
+	};*/
 
 
 	$scope.init();

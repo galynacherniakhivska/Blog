@@ -53,6 +53,29 @@ blog.service('postService', function($http, $log, $q, $rootScope){
 
    //this.UpdatePost
 
+		var deferred = $q.defer();
+
+		var req = {
+			 method: 'POST',
+			 url: $rootScope.endPoint +'/api/posts',
+			 headers: {
+			   'Content-Type': 'application/json'
+			 },
+			 data: post;
+
+		$http.add(req).
+		success(function(res) {
+			$log.log('response');
+			$log.log(res);
+			deferred.resolve(res);
+		}).
+		error(function(err, status) {
+			deferred.reject(err);
+		})
+
+    	return deferred.promise;
+
+
 
     return serv;
 	
