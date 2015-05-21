@@ -1,21 +1,20 @@
 blog.controller('PostDetailsController', function($scope, $rootScope, $log, postService, $routeParams){
-	$log.log("controller");
+	$log.log("DetailsController");
 	
-	$scope.init = function() {
-		$scope.postId = $routeParams.id;
-		$scope.page = 1;
-	};
+	
+	$scope.postId = $routeParams.id;
+	 $log.log($scope.postId);
+	  postService.getPostDetails($scope.postId).
+	  then(function(res) {
+	   $scope.title = res.title;
+	   $scope.text = res.text;
+	   $scope.author = res.author;
+	   $scope.timestamp = res.timestamp;
 
-	$scope.getPostDetails = function() {
-		$log.log($scope.postId);
-		postService.getPostDetails($scope.postId).
-		then(function(res) {
-			$log.log(res [0]) ;
-		}, function(err) {
-			$log.log(err);
-			// $scope.getPostList();
-		})
-	};	
+	  }, function(err) {
+	   $log.log(err);
+	   // $scope.getPostList();
+	  })
 
 });
 

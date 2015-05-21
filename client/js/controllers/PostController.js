@@ -1,5 +1,5 @@
 blog.controller('PostController', function($scope, $rootScope, $log, postService){
-	$log.log("controller");
+	$log.log("PostController");
 
 
 	$scope.init = function() {
@@ -23,11 +23,17 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 		}, function(err) {
 			$log.log(err);
 		})
-	}
+	};
 
 	$scope.addPost = function() {
-  		var post = {"text":"hello there","title":"post"};
-   		postService.addPost (post);
+  		var post = {"title":"Post", "text":"Hello there", "author":"admin", "timestamp":12345778};
+   		postService.addPost (post).
+   		then(function(res) {
+			$scope.getPostsFrom(getFirstPostOfPage($scope.page), $rootScope.postOnPage);
+		}, function(err) {
+			$log.log(err);
+			// $scope.getPostList();
+		})
  		};
 
  	$scope.deletePost = function(post) {
@@ -40,7 +46,7 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 			// $scope.getPostList();
 		})
 	};	
-	
+
 
 	//$scope.UpdatePost
 
