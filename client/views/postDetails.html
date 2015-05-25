@@ -1,6 +1,18 @@
+
 <div ng-controller="PostDetailsController"> 
+			
 			<h2 class="blog-post-title">  {{title}} </h2>
             <p class="blog-post-meta"> {{timestamp}} by {{author}}</p>
 
             <p>{{text}}</p>
+            <p>COMMENTS BLOCK</p>
+        <!--     <p>{{comments}}</p> -->
+             <div data-ng-repeat="comment in comments">
+             <p><a>{{comment.author}}</a> at {{comment.timestamp}}</p>
+            <h>Summary: {{comment.summary}} </h>
+            <p>Text: {{comment.text}}</p>
+         
+                                  
+    
+          </div>
             </div>

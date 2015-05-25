@@ -53,19 +53,38 @@ blog.service('postService', function($http, $log, $q, $rootScope){
 
    //this.UpdatePost
 
-		var deferred = $q.defer();
+    this.addPost = function(post)
+   {
+		  var deferred = $q.defer();
 
-		var req = {
-			 method: 'POST',
-			 url: $rootScope.endPoint +'/api/posts',
-			 headers: {
-			   'Content-Type': 'application/json'
-			 },
-			 data: post;
+		  var req = {
+		    method: 'POST',
+		    url: $rootScope.endPoint +'/api/posts',
+		    headers: {
+		      'Content-Type': 'application/json'
+		    },
+		    data: post
+		   }
 
-		$http.add(req).
-		success(function(res) {
-			$log.log('response');
+		  $http (req).
+		  success(function(res) {
+		   $log.log('response');
+		   $log.log(res);
+		   deferred.resolve(res);
+		  }).
+		  error(function(err, status) {
+		   deferred.reject(err);
+  })
+
+     return deferred.promise;
+    }
+
+	this.getPostDetails = function(id) {
+		
+			var deferred = $q.defer();
+
+			$http.get($rootScope.endPoint +'/api/posts/' + id).
+			success(function(res) {
 			$log.log(res);
 			deferred.resolve(res);
 		}).
@@ -74,7 +93,24 @@ blog.service('postService', function($http, $log, $q, $rootScope){
 		})
 
     	return deferred.promise;
+    };
+	
+///Post Comments
+	this.getComments = function(postId) {
+		
+			var deferred = $q.defer();
+			
+			$http.get($rootScope.endPoint +'/api/posts/' + postId + '/comments').
+			success(function(res) {
+		$log.log(res);
+			deferred.resolve(res);
+		}).
+		error(function(err, status) {
+			deferred.reject(err);
+		})
 
+    	return deferred.promise;
+    };
 
 
     return serv;

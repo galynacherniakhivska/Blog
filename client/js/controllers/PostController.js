@@ -48,8 +48,6 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 	};	
 
 
-	//$scope.UpdatePost
-
 	$scope.getNext = function() {
 		$scope.page++;
 		$scope.getPostsFrom(getFirstPostOfPage($scope.page), $rootScope.postOnPage);	
