@@ -1,18 +1,40 @@
 
 <div ng-controller="PostDetailsController"> 
 			
-			<h2 class="blog-post-title">  {{title}} </h2>
-            <p class="blog-post-meta"> {{timestamp}} by {{author}}</p>
+		<div>
+      	<h2 class="blog-post-title">  {{title}} </h2>
+        <p class="blog-post-meta"> {{timestamp}} by {{author}}</p>
 
-            <p>{{text}}</p>
-            <p>COMMENTS BLOCK</p>
-        <!--     <p>{{comments}}</p> -->
-             <div data-ng-repeat="comment in comments">
-             <p><a>{{comment.author}}</a> at {{comment.timestamp}}</p>
-            <h>Summary: {{comment.summary}} </h>
-            <p>Text: {{comment.text}}</p>
-         
+        <p>{{text}}</p>
+
+        <button type="button" data-ng-click="editPost()">Edit Post</button>
+
+     </div>
+
+     <div>
+        <p> Post Title </p>
+        <input type = "text" ng-model = "comment.summary"> </input>
+
+        <p> Post Text </p>
+        <input type = "text" ng-model = "comment.text"> </input> </br>
+     </div>
+      
+      <p>COMMENTS BLOCK</p>
+
+      <p> Comment Summary </p>
+      <input type = "text" ng-model = "comment.summary"> </input>
+
+      <p> Comment Text </p>
+      <input type = "text" ng-model = "comment.text"> </input> </br>
+
+      <button type="button" data-ng-click="addComment()">Add Comment</button> 
+
+      <div data-ng-repeat="comment in comments">
+          <p><a>{{comment.author}}</a> at {{comment.timestamp}}</p>
+          <h>Summary: {{comment.summary}} </h>
+          <p>Text: {{comment.text}}</p>
+          <button type="button" data-ng-click="deleteComment(comment.id)">Remove</button>
                                   
     
-          </div>
-            </div>
+      </div>
+</div>

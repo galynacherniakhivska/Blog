@@ -112,6 +112,48 @@ blog.service('postService', function($http, $log, $q, $rootScope){
     	return deferred.promise;
     };
 
+     this.addComment = function(postId, comment)
+   {
+		  var deferred = $q.defer();
+
+		  var req = {
+		    method: 'POST',
+		    url: $rootScope.endPoint +'/api/posts/' + postId + '/comments',
+		    headers: {
+		      'Content-Type': 'application/json'
+		    },
+		    data: comment
+		   }
+
+		  $http (req).
+		  success(function(res) {
+		   $log.log('response');
+		   $log.log(res);
+		   deferred.resolve(res);
+		  }).
+		  error(function(err, status) {
+		   deferred.reject(err);
+  })
+
+     return deferred.promise;
+    }
+
+    this.deleteComment = function(postId, commentId) {
+		var deferred = $q.defer();
+
+		$http.delete($rootScope.endPoint +'/api/posts/' + postId + '/comments/' + commentId).
+		success(function(res) {
+			$log.log('response');
+			$log.log(res);
+			deferred.resolve(res);
+		}).
+		error(function(err, status) {
+			deferred.reject(err);
+		})
+
+    	return deferred.promise;
+    };
+
 
     return serv;
 	

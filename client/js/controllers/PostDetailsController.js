@@ -1,6 +1,7 @@
 blog.controller('PostDetailsController', function($scope, $rootScope, $log, postService, $routeParams){
 
 	$scope.init  = function(id) {
+		$scope.postId = id;
 		$scope.getPost(id);
 		$scope.getPostComents(id);
 	};
@@ -26,6 +27,27 @@ blog.controller('PostDetailsController', function($scope, $rootScope, $log, post
 		})
 	};
 
+	$scope.addComment = function() {
+  		var comment = {"summary": $scope.comment.summary, "text":$scope.comment.text, "author":"admin", "timestamp":12345778};
+   		postService.addComment($scope.postId, comment).
+   		then(function(res) {
+			$scope.getPostComents($scope.postId);
+		}, function(err) {
+			$log.log(err);
+			// $scope.getPostList();
+		})
+ 	};
+
+ 	$scope.deleteComment = function(commentId) {
+		$log.log(commentId);
+		postService.deleteComment($scope.postId, commentId).
+		then(function(res) {
+			$scope.getPostComents($scope.postId);
+		}, function(err) {
+			$log.log(err);
+			// $scope.getPostList();
+		})
+	};	
 
 
 	$scope.init($routeParams.id);
