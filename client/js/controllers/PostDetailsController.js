@@ -4,6 +4,7 @@ blog.controller('PostDetailsController', function($scope, $rootScope, $log, post
 		$scope.postId = id;
 		$scope.getPost(id);
 		$scope.getPostComents(id);
+		$scope.modeEdit = false;
 	};
 
 	$scope.getPost = function(id) {
@@ -49,6 +50,28 @@ blog.controller('PostDetailsController', function($scope, $rootScope, $log, post
 		})
 	};	
 
+	$scope.editPost = function() {
+			$scope.modeEdit = true;		
+		};	
+
+	$scope.cancel = function() {
+		$scope.modeEdit = false;
+		
+	};	
+	
+	$scope.save = function() {
+			$scope.modeEdit = false;
+			var post = {"title": $scope.title, "text": $scope.text, "author":"admin", "timestamp":12345778}
+	   		postService.updatePost (post, $scope.postId).
+	   		then(function(res) {
+				$scope.getPost($scope.postId);
+			}, function(err) {
+				$log.log(err);
+				// $scope.getPostList();
+			})
+			
+		};
+	
 
 	$scope.init($routeParams.id);
 

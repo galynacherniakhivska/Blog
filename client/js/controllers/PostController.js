@@ -37,14 +37,16 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
  		};
 
  	$scope.deletePost = function(post) {
-		$log.log(post.id);
-		postService.deletePost(post.id).
-		then(function(res) {
+ 		if (confirm ("Are you sure?")) {
+ 			$log.log(post.id);
+			postService.deletePost(post.id).
+			then(function(res) {
 			$scope.getPostsFrom(getFirstPostOfPage($scope.page), $rootScope.postOnPage);
-		}, function(err) {
-			$log.log(err);
-			// $scope.getPostList();
-		})
+			}, 	function(err) {
+				$log.log(err);
+				// $scope.getPostList();
+			})
+	 	}		
 	};	
 
 

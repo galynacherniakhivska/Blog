@@ -108,6 +108,25 @@ function deletePost(req, res, store) {
 	});
 }
 
+function updatePost (req, res, store) {
+	var postId = +req.params.id;
+	
+	store.updatePost(postId, req.body, function(err, post) {
+		if (err) {
+			res.status(400);
+			res.json(err);
+			return;
+		} 
+
+		if (post === null) {
+			sendError(res, 404, 'Could not find post id ' + postId);
+			return;
+		}
+
+		res.json(post);
+	});
+}
+
 function getComments(req, res, store) {
 	var postId = +req.params.id;
 	store.getComments(postId, function(err, comments) {

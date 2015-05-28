@@ -1,8 +1,8 @@
 
 <div ng-controller="PostDetailsController"> 
 			
-		<div>
-      	<h2 class="blog-post-title">  {{title}} </h2>
+    <div id="viewMode" ng-show = !modeEdit>
+        <h2 class="blog-post-title">  {{title}} </h2>
         <p class="blog-post-meta"> {{timestamp}} by {{author}}</p>
 
         <p>{{text}}</p>
@@ -11,13 +11,19 @@
 
      </div>
 
-     <div>
+       <div id="editMode" ng-show = modeEdit>
+        
         <p> Post Title </p>
-        <input type = "text" ng-model = "comment.summary"> </input>
+        <input type = "text" ng-model = "title"> </input>
 
         <p> Post Text </p>
-        <input type = "text" ng-model = "comment.text"> </input> </br>
+        <input type = "text" ng-model = "text"> </input> </br>
+
+         <button type="button" data-ng-click="save()">Save Post</button>
+         <button type="button" data-ng-click="cancel()">Cancel</button>
+
      </div>
+
       
       <p>COMMENTS BLOCK</p>
 
