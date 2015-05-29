@@ -1,10 +1,11 @@
 blog.controller('PostController', function($scope, $rootScope, $log, postService){
 	$log.log("PostController");
 
-
+	
 	$scope.init = function() {
 		$scope.getPostsFrom(0, $rootScope.postOnPage);
 		$scope.page = 1;
+		$scope.pageSize = 5;
 	};
 
 	$scope.getPostsFrom = function(from, length) {
@@ -50,7 +51,7 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 	};	
 
 
-	$scope.getNext = function() {
+	$scope.getMore = function() {
 		$scope.page++;
 		$scope.getPostsFrom(getFirstPostOfPage($scope.page), $rootScope.postOnPage);	
 	};
@@ -69,3 +70,5 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 
 
 });
+
+	
