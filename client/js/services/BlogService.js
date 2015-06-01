@@ -53,38 +53,37 @@ blog.service('postService', function($http, $log, $q, $rootScope){
 
    //this.UpdatePost
 
-    this.addPost = function(post)
-   {
-		  var deferred = $q.defer();
+    this.addPost = function(post) {
+		var deferred = $q.defer();
 
-		  var req = {
-		    method: 'POST',
-		    url: $rootScope.endPoint +'/api/posts',
-		    headers: {
-		      'Content-Type': 'application/json'
-		    },
-		    data: post
-		   }
+	  	var req = {
+	    method: 'POST',
+	    url: $rootScope.endPoint +'/api/posts',
+	    headers: {
+	      'Content-Type': 'application/json'
+	    },
+	    data: post
+	    }
 
-		  $http (req).
-		  success(function(res) {
-		   $log.log('response');
-		   $log.log(res);
-		   deferred.resolve(res);
-		  }).
-		  error(function(err, status) {
-		   deferred.reject(err);
-  })
+	 	$http (req).
+	    success(function(res) {
+		    $log.log('response');
+		    $log.log(res);
+	    	deferred.resolve(res);
+	    }).
+	    error(function(err, status) {
+	    	deferred.reject(err);
+		})
 
-     return deferred.promise;
-    }
+ 		return deferred.promise;
+    };
 
 	this.getPostDetails = function(id) {
 		
-			var deferred = $q.defer();
+		var deferred = $q.defer();
 
-			$http.get($rootScope.endPoint +'/api/posts/' + id).
-			success(function(res) {
+		$http.get($rootScope.endPoint +'/api/posts/' + id).
+		success(function(res) {
 			$log.log(res);
 			deferred.resolve(res);
 		}).
@@ -95,14 +94,13 @@ blog.service('postService', function($http, $log, $q, $rootScope){
     	return deferred.promise;
     };
 	
-///Post Comments
 	this.getComments = function(postId) {
 		
-			var deferred = $q.defer();
-			
-			$http.get($rootScope.endPoint +'/api/posts/' + postId + '/comments').
+		var deferred = $q.defer();
+		
+		$http.get($rootScope.endPoint +'/api/posts/' + postId + '/comments').
 			success(function(res) {
-		$log.log(res);
+			$log.log(res);
 			deferred.resolve(res);
 		}).
 		error(function(err, status) {
@@ -112,31 +110,30 @@ blog.service('postService', function($http, $log, $q, $rootScope){
     	return deferred.promise;
     };
 
-     this.addComment = function(postId, comment)
-   {
-		  var deferred = $q.defer();
+     this.addComment = function(postId, comment) {
+		var deferred = $q.defer();
 
-		  var req = {
-		    method: 'POST',
-		    url: $rootScope.endPoint +'/api/posts/' + postId + '/comments',
-		    headers: {
-		      'Content-Type': 'application/json'
-		    },
-		    data: comment
-		   }
+		var req = {
+		method: 'POST',
+		url: $rootScope.endPoint +'/api/posts/' + postId + '/comments',
+		headers: {
+		   'Content-Type': 'application/json'
+		},
+		data: comment
+		}
 
-		  $http (req).
-		  success(function(res) {
+		$http (req).
+		success(function(res) {
 		   $log.log('response');
 		   $log.log(res);
 		   deferred.resolve(res);
-		  }).
-		  error(function(err, status) {
-		   deferred.reject(err);
-  })
+		}).
+		error(function(err, status) {
+		deferred.reject(err);
+  	})
 
-     return deferred.promise;
-    }
+     	return deferred.promise;
+    };
 
     this.deleteComment = function(postId, commentId) {
 		var deferred = $q.defer();
@@ -154,28 +151,27 @@ blog.service('postService', function($http, $log, $q, $rootScope){
     	return deferred.promise;
     };
 
-    this.updatePost = function(post, postId)
-   {
-		  var deferred = $q.defer();
+    this.updatePost = function(post, postId) {
+		var deferred = $q.defer();
 
-		  var req = {
-		    method: 'PUT',
-		    url: $rootScope.endPoint +'/api/posts/' + postId,
-		    headers: {
+		var req = {
+	    method: 'PUT',
+	    url: $rootScope.endPoint +'/api/posts/' + postId,
+	    headers: {
 		      'Content-Type': 'application/json'
-		    },
-		    data: post
-		   }
+	   },
+	   data: post
+	   }
 
-		  $http (req).
-		  success(function(res) {
+		$http (req).
+		success(function(res) {
 		   $log.log('response');
 		   $log.log(res);
 		   deferred.resolve(res);
-		  }).
+		}).
 		  error(function(err, status) {
-		   deferred.reject(err);
-		  })
+		  deferred.reject(err);
+		})
 		  
 		  return deferred.promise;
     };

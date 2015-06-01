@@ -2,27 +2,27 @@
 <div ng-controller="PostDetailsController"> 
 			
     <div id="viewMode" ng-show = !modeEdit>
-        <h2 class="blog-post-title">  {{title}} </h2>
-        <p class="blog-post-meta"> {{timestamp}} by {{author}}</p>
+      <h2 class="blog-post-title">  {{title}} </h2>
+      <p class="blog-post-meta"> {{timestamp}} by {{author}}</p>
 
-        <p>{{text}}</p>
+      <p>{{text}}</p>
 
-        <button type="button" data-ng-click="editPost()">Edit Post</button>
+      <button type="button" data-ng-click="editPost()">Edit Post</button>
 
-     </div>
+    </div>
 
-       <div id="editMode" ng-show = modeEdit>
+    <div id="editMode" ng-show = modeEdit>
         
-        <p> Post Title </p>
-        <input type = "text" ng-model = "title"> </input>
+      <p> Post Title </p>
+      <input type = "text" ng-model = "title"> </input>
 
-        <p> Post Text </p>
-        <input type = "text" ng-model = "text"> </input> </br>
+      <p> Post Text </p>
+      <input type = "text" ng-model = "text"> </input> </br>
 
-         <button type="button" data-ng-click="save()">Save Post</button>
-         <button type="button" data-ng-click="cancel()">Cancel</button>
+      <button type="button" data-ng-click="save()">Save Post</button>
+      <button type="button" data-ng-click="cancel()">Cancel</button>
 
-     </div>
+    </div>
 
       
       <p>COMMENTS BLOCK</p>
@@ -35,12 +35,12 @@
 
       <button type="button" data-ng-click="addComment()">Add Comment</button> 
 
-      <div data-ng-repeat="comment in comments">
-          <p><a>{{comment.author}}</a> at {{comment.timestamp}}</p>
-          <h>Summary: {{comment.summary}} </h>
-          <p>Text: {{comment.text}}</p>
-          <button type="button" data-ng-click="deleteComment(comment.id)">Remove</button>
+    <div data-ng-repeat="comment in comments">
+      <p><a>{{comment.author}}</a> at {{comment.timestamp}}</p>
+      <h>Summary: {{comment.summary}} </h>
+      <p>Text: {{comment.text}}</p>
+      <button type="button" data-ng-click="deleteComment(comment.id)">Remove</button>
                                   
     
-      </div>
+    </div>
 </div>

@@ -1,26 +1,24 @@
 <div ng-controller="PostController">
 
-    <button type="button" data-ng-click="addPost()">Add New</button> 
-    <p></p>  
+  <button type="button" data-ng-click="addPost()">Add New</button> 
+  <p></p>  
          
     <div class="blog-post" data-ng-repeat="post in posts">
 
-            <h2 class="blog-post-title">  <a href='#'data-ng-href="#/posts/{{post.id}}"> {{post.title}} </a> </h2>
-            <p class="blog-post-meta"> {{post.timestamp}} by {{post.author}}</p>
+      <h2 class="blog-post-title">  <a href='#'data-ng-href="#/posts/{{post.id}}"> {{post.title}} </a> </h2>
+      <p class="blog-post-meta"> {{post.timestamp}} by {{post.author}}</p>
 
-            <p>{{post.text}}</p>
-            <button type="button" data-ng-click="deletePost(post)">Remove</button>
-            
-            <!-- <button type="button" data-ng-click="editPost(post)">Edit</button> -->
-                                  
+      <p>{{post.text}}</p>
+      <button type="button" data-ng-click="deletePost(post)">Remove</button>                            
     
-          </div>
-                    <nav>
-            <ul class="pager">              
-              <li><button ng-disabled ="page==1" data-ng-click="getPrevious()">Previous</button></li>
-              {{page}}
-              <li><button data-ng-click="getMore()">More</button></li>
-            </ul>
-          </nav>
+    </div>
+      
+      <nav>
+        <ul class="pager">              
+          <li><button ng-disabled ="page==1" data-ng-click="getPrevious()">Previous</button></li>
+          {{page}}
+          <li><button data-ng-click="getMore()">More</button></li>
+        </ul>
+      </nav>
 
 </div>

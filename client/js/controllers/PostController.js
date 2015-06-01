@@ -35,7 +35,7 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 			$log.log(err);
 			// $scope.getPostList();
 		})
- 		};
+ 	};
 
  	$scope.deletePost = function(post) {
  		if (confirm ("Are you sure?")) {

@@ -60,17 +60,17 @@ blog.controller('PostDetailsController', function($scope, $rootScope, $log, post
 	};	
 	
 	$scope.save = function() {
-			$scope.modeEdit = false;
-			var post = {"title": $scope.title, "text": $scope.text, "author":"admin", "timestamp":12345778}
-	   		postService.updatePost (post, $scope.postId).
-	   		then(function(res) {
-				$scope.getPost($scope.postId);
-			}, function(err) {
-				$log.log(err);
-				// $scope.getPostList();
-			})
+		$scope.modeEdit = false;
+		var post = {"title": $scope.title, "text": $scope.text, "author":"admin", "timestamp":12345778}
+   		postService.updatePost (post, $scope.postId).
+   		then(function(res) {
+			$scope.getPost($scope.postId);
+		}, function(err) {
+			$log.log(err);
+			// $scope.getPostList();
+		})
 			
-		};
+	};
 	
 
 	$scope.init($routeParams.id);
