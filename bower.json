@@ -19,7 +19,6 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
-    "node_modules",
     "client/vnd",
     "test",
     "tests"
