@@ -29,7 +29,7 @@ blog.controller('PostDetailsController', function($scope, $rootScope, $log, post
 	};
 
 	$scope.addComment = function() {
-  		var comment = {"summary": $scope.comment.summary, "text":$scope.comment.text, "author":"admin", "timestamp":12345778};
+		var comment = {"summary": $scope.comment.summary, "text":$scope.comment.text, "author":"admin", "timestamp":12345778};
    		postService.addComment($scope.postId, comment).
    		then(function(res) {
 			$scope.getPostComents($scope.postId);
@@ -37,6 +37,8 @@ blog.controller('PostDetailsController', function($scope, $rootScope, $log, post
 			$log.log(err);
 			// $scope.getPostList();
 		})
+		$scope.comment.summary = "";
+		$scope.comment.text = "";
  	};
 
  	$scope.deleteComment = function(commentId) {

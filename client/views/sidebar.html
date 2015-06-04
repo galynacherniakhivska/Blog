@@ -17,10 +17,7 @@
         <ul class="pager">              
           <li><button ng-disabled ="page==1" data-ng-click="getPrevious()">Previous</button></li>
           {{page}}
-          <li><button data-ng-click="getMore()">More</button></li>
-
-
-
+          <li><button ng-disabled ="nextPageCount==0" data-ng-click="getMore()">More</button></li>
         </ul>
       </nav>
 

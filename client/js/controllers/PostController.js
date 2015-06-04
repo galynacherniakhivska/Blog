@@ -12,6 +12,7 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 		postService.getPostsFrom(from, length).
 		then(function(res) {
 			$scope.posts = res;
+			definedLastPage ();
 		}, function(err) {
 			$log.log(err);
 		})
@@ -64,6 +65,19 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 	function getFirstPostOfPage (page) {
 		return $rootScope.postOnPage * (page - 1);
 	};
+
+	function definedLastPage () {
+		if ($scope.posts.length < $rootScope.postOnPage) {
+			$scope.nextPageCount = 0;
+		}
+
+		postService.getPostsFrom(getFirstPostOfPage($scope.page+1), $rootScope.postOnPage).
+		then(function(res) {
+			$scope.nextPageCount = res.length;
+		}, function(err) {
+			$log.log(err);
+		})		
+	}
 
 	$scope.init();
 
