@@ -53,7 +53,7 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 
 	$scope.getMore = function() {
 		$scope.page++;
-		$scope.getPostsFrom(getFirstPostOfPage($scope.page), $rootScope.postOnPage);	
+		$scope.getPostsFrom(getFirstPostOfPage($scope.page), $rootScope.postOnPage);
 	};
 
     $scope.getPrevious = function() {
@@ -65,7 +65,6 @@ blog.controller('PostController', function($scope, $rootScope, $log, postService
 		return $rootScope.postOnPage * (page - 1);
 	};
 
-	
 	$scope.init();
 
 
